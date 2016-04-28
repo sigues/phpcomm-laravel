@@ -15,10 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/12', function () {
-    return view('welcome');
-});
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -29,12 +25,12 @@ Route::get('/12', function () {
 | kernel and includes session state, CSRF protection, and more.
 |
 */
-Route::group(['prefix' => 'api/v1'], function () {
-    return Route::resource('users','API\v1\UserController');
+app('router')->group(['prefix' => 'api/v1'], function () {
+    Route::resource('users','API\v1\UserController');
+    Route::resource('posts', 'API\v1\PostsController');
 });
 
-
-Route::group(['middleware' => ['web']], function () {
-    //
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+    Route::get('/home', 'HomeController@index');
 });
-
