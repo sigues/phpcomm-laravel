@@ -1,0 +1,20 @@
+<a ui-sref="index">Return to Posts</a><br>
+
+<h3>Edit</h3>
+
+<form ng-submit="save()">
+	<div class="form-group">
+		<label for="title">title</label>
+		<input class="form-control" type="text" name="title" id="title" ng-model="post.title">
+	</div>
+	<div class="form-group">
+		<label for="slug">slug</label>
+		<input class="form-control" type="text" name="slug" id="slug" ng-model="post.slug">
+	</div>
+	<div class="form-group">
+		<label for="content">content</label>
+		<textarea class="form-control" name="content" id="content" ng-model="post.content"><</textarea>
+	</div>
+
+<input type="submit" value="guardar" />
+</form>
